@@ -1,0 +1,33 @@
+insert into User (id, email, nickname, password) values (1, 'jan@example.com', 'janjanjan', 'janjanjan');
+insert into User (id, email, nickname, password) values (2, 'ola@example.com', 'olaolaola', 'olaolaola');
+insert into User (id, email, nickname, password) values (3, 'ela@example.com', 'elaelaela', 'elaelaela');
+insert into User (id, email, nickname, password) values (4, 'ula@example.com', 'ulaulaula', 'ulaulaula');
+
+insert into Post (post_id, user_id, body, created_at) values (1, 1, 'Moj pierwszy #post #jan', 2011-02-02);
+insert into Post (post_id, user_id, body, created_at) values (2, 2, 'Moj pierwszy #post #ola', 2011-02-02);
+insert into Post (post_id, user_id, body, created_at) values (3, 3, 'Moj pierwszy #post #ela', 2011-02-02);
+insert into Post (post_id, user_id, body, created_at) values (4, 4, 'Moj pierwszy #post #ula', 2011-02-02);
+insert into Post (post_id, user_id, body, created_at) values (5, 1, '#informatyka na #ug jest zajefajna', 2011-02-03);
+insert into Post (post_id, user_id, body, created_at) values (6, 2, 'na #ug moze i jest ok, ale na #pg jest lepiej', 2011-02-03);
+insert into Post (post_id, user_id, body, created_at) values (7, 3, '#ug, #pg, nic to w porownaniu z #pjwstk', 2011-02-03);
+insert into Post (post_id, user_id, body, created_at) values (8, 4, 'chyba snicie najlepiej jest na #umk - #ug, #pg, #pjwstk niech sie lepiej schowa', 2011-02-03);
+
+insert into PostTag (post_tag_id, post_post_id, tag) values (1, 1, 'post');
+insert into PostTag (post_tag_id, post_post_id, tag) values (2, 1, 'jan');
+insert into PostTag (post_tag_id, post_post_id, tag) values (3, 2, 'post');
+insert into PostTag (post_tag_id, post_post_id, tag) values (4, 2, 'ola');
+insert into PostTag (post_tag_id, post_post_id, tag) values (5, 3, 'post');
+insert into PostTag (post_tag_id, post_post_id, tag) values (6, 3, 'ela');
+insert into PostTag (post_tag_id, post_post_id, tag) values (7, 4, 'post');
+insert into PostTag (post_tag_id, post_post_id, tag) values (8, 4, 'ula');
+insert into PostTag (post_tag_id, post_post_id, tag) values (9, 5, 'informatyka');
+insert into PostTag (post_tag_id, post_post_id, tag) values (10, 5, 'ug');
+insert into PostTag (post_tag_id, post_post_id, tag) values (11, 6, 'ug');
+insert into PostTag (post_tag_id, post_post_id, tag) values (12, 6, 'pg');
+insert into PostTag (post_tag_id, post_post_id, tag) values (13, 7, 'ug');
+insert into PostTag (post_tag_id, post_post_id, tag) values (14, 7, 'pg');
+insert into PostTag (post_tag_id, post_post_id, tag) values (15, 7, 'pjwstk');
+insert into PostTag (post_tag_id, post_post_id, tag) values (16, 8, 'umk');
+insert into PostTag (post_tag_id, post_post_id, tag) values (17, 8, 'ug');
+insert into PostTag (post_tag_id, post_post_id, tag) values (18, 8, 'pg');
+insert into PostTag (post_tag_id, post_post_id, tag) values (19, 8, 'pjwstk');

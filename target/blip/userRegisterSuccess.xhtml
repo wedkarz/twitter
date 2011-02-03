@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:ui="http://java.sun.com/jsf/facelets"
+   xmlns:f="http://java.sun.com/jsf/core"
+   xmlns:h="http://java.sun.com/jsf/html"
+   template="/WEB-INF/templates/default.xhtml">
+   <ui:define name="content">
+      <h1>Cześć!</h1>
+      <p>Zarejestrowano i zalogowano</p>
+      <h2>Users</h2>
+      <p><h:outputLabel for="nickname" value="Nickname: " /><h:outputText value="#{userBean.nickname}" /></p>
+      <p><h:outputLabel for="email" value="Email: " /><h:outputText value="#{userBean.email}" /></p>
+      <p><h:commandButton id="back" action="home" value="Back" /></p>  
+   </ui:define>
+</ui:composition>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/WEB-INF/templates/default.xhtml">
+	<ui:define name="content">
+
+		<h1>Hello!</h1>
+		<p>Change your personal data :)</p>
+		<h:form id="userEditForm">
+			<table>
+				<tr>
+					<th style="text-align: right;"><h:outputLabel for="name"
+						value="Name:" /></th>
+					<td><h:inputText id="name" value="#{userBean.name}" /> <h:message
+						for="name" errorStyle="color: red" showSummary="true" showDetail="false" /></td>
+				</tr>
+				<tr>
+					<th style="text-align: right;"><h:outputLabel for="surname"
+						value="Surname:" /></th>
+					<td><h:inputText id="surname" value="#{userBean.surname}" />
+					<h:message for="surname" errorStyle="color: red" showSummary="true" showDetail="false" /></td>
+				</tr>
+				<tr>
+					<th style="text-align: right;"><h:outputLabel for="birthday"
+						value="Birthday:" /></th>
+					<td><h:inputText id="dob" value="#{userBean.dob}">
+					 <f:convertDateTime pattern="dd.MM.yyyy" /> (dd.mm.yyyy)
+					 </h:inputText>
+					 <h:message for="dob" errorStyle="color: red" showSummary="true" showDetail="false" />
+					</td>
+				</tr>
+				<tr>
+					<th style="text-align: right;"><h:outputLabel for="gender"
+						value="Gender:" /></th>
+					<td><h:selectOneMenu id="gender" value="#{userBean.gender}">
+						<f:selectItems value="#{userBean.genders}" />
+					</h:selectOneMenu> <h:message for="gender" errorStyle="color: red" showSummary="true" showDetail="false" /></td>
+				</tr>
+			</table>
+			<p><h:commandButton id="updateUser" action="#{userBean.updateUser}"
+				value="Edytuj dane użytkownika" /> <h:outputText value=" All clear!"
+				rendered="#{facesContext.postback and empty facesContext.messageList}"
+				style="color: green;" /></p>
+		</h:form>
+	</ui:define>
+</ui:composition>

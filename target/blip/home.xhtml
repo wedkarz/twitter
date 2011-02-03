@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jstl/core"
+	template="/WEB-INF/templates/default.xhtml">
+	<ui:define name="content">
+		<ol id="posts-list" class="hfeed">
+			<h:dataTable var="_post" value="#{mainSiteBean.allPosts}">
+				<li><article class="hentry"> <h:column>
+					<header>
+					<h2 class="entry-title">Blip no. #{_post.id}</h2>
+					</header>
+
+					<div class="entry-content">
+					<p><h:outputText value="#{_post.body}" /></p>
+					<p><small><h:form>Tags: 
+						<ui:repeat var="_tag"
+							value="#{mainSiteBean.getAllPostTags(_post)}">
+							<h:commandLink value="##{_tag} "
+								action="#{mainSiteBean.showTagPosts(_tag)}" />
+						</ui:repeat>
+					</h:form></small></p>
+					<p><small>Created at: <strong>#{_post.created_at}</strong>
+					by <strong>#{_post.user.nickname}</strong></small></p>
+					<h:form>
+						<h:commandLink action="#{postBean.removePost(_post)}"
+							value="Remove post" rendered="#{postBean.isAuthor(userBean.user, _post)}"/>
+						<h:outputText value="   " />
+						<h:commandLink action="#{postBean.editPost(_post)}" rendered="#{postBean.isAuthor(userBean.user, _post)}" value="Edit post" />
+					</h:form></div>
+				</h:column></article></li>
+			</h:dataTable>
+		</ol>
+	</ui:define>
+</ui:composition>

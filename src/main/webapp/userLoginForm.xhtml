@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:ui="http://java.sun.com/jsf/facelets"
+  xmlns:f="http://java.sun.com/jsf/core"
+  xmlns:h="http://java.sun.com/jsf/html"
+  template="/WEB-INF/templates/default.xhtml">
+  <ui:define name="content">
+
+    <h1>Hello!</h1>
+    <p>Log in to tłit :)</p>
+    <h:form id="userLoginForm">
+      <table>
+        <tr>
+          <th style="text-align: right;"><h:outputLabel for="login"
+            value="Login (email or nick):" /></th>
+          <td><h:inputText id="login" value="#{userBean.login}" required="true"/>
+          <h:message for="login" rendered="false"/>
+          </td>
+        </tr>
+        <tr>
+          <th style="text-align: right;"><h:outputLabel for="password"
+            value="Password:" /></th>
+          <td><h:inputSecret id="password" value="#{userBean.password}" required="true"/>
+          <h:message for="password" rendered="false"/>
+          </td>
+        </tr>
+      </table>
+      <p><h:commandButton id="loginUser" action="#{userBean.loginUser}"
+        value="Zaloguj się" /></p>
+    </h:form>
+  
+  </ui:define>
+</ui:composition>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/WEB-INF/templates/default.xhtml">
+	<ui:define name="content">
+
+		<h1>Hello!</h1>
+		<p>Register to tłit :)</p>
+		<h:form id="userRegisterForm">
+			<table>
+				<tr>
+					<th style="text-align: right;"><h:outputLabel for="email"
+						value="Email:" /></th>
+					<td><h:inputText id="email" value="#{userBean.email}" validator="#{userBean.validateEmail}" required="true"/>
+					<h:message for="email" rendered="false"/>
+					</td>
+				</tr>
+				<tr>
+					<th style="text-align: right;"><h:outputLabel for="nickname"
+						value="Nickname:" /></th>
+					<td><h:inputText id="nickname" value="#{userBean.nickname}" validator="#{userBean.validateNickname}" required="true"/>
+					<h:message for="nickname" rendered="false"/></td>
+				</tr>
+				<tr>
+					<th style="text-align: right;"><h:outputLabel for="password"
+						value="Password:" /></th>
+					<td><h:inputSecret id="password" value="#{userBean.password}" required="true"/>
+					<h:message for="password" rendered="false"/></td>
+				</tr>
+			</table>
+			<p><h:commandButton id="addUser" action="#{userBean.addUser}"
+				value="Dodaj użytkownika" /></p>
+		</h:form>
+
+	</ui:define>
+</ui:composition>

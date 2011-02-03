@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from PostService WSDL service -->
+
+  <service name="Post" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://domain.foo"/>
+      <parameter name="wsdlServiceElement" value="PostService"/>
+      <parameter name="schemaQualified" value="http://xml.apache.org/xml-soap,http://domain.foo"/>
+      <parameter name="wsdlServicePort" value="Post"/>
+      <parameter name="className" value="foo.domain.Post"/>
+      <parameter name="wsdlPortType" value="Post"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://domain.foo" name="setUser" qname="operNS:setUser" soapAction="">
+        <parameter xmlns:pns="http://domain.foo" xmlns:tns="http://domain.foo" qname="pns:user" type="tns:User"/>
+      </operation>
+      <operation xmlns:operNS="http://domain.foo" xmlns:retNS="http://domain.foo" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getBody" qname="operNS:getBody" returnQName="retNS:getBodyReturn" returnType="rtns:string" soapAction="">
+      </operation>
+      <operation xmlns:operNS="http://domain.foo" name="setId" qname="operNS:setId" soapAction="">
+        <parameter xmlns:pns="http://domain.foo" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:id" type="tns:long"/>
+      </operation>
+      <operation xmlns:operNS="http://domain.foo" xmlns:retNS="http://domain.foo" xmlns:rtns="http://domain.foo" xmlns:tns="http://domain.foo" name="getTags" qname="operNS:getTags" returnQName="retNS:getTagsReturn" returnType="rtns:ArrayOf_xsd_anyType" returnItemQName="tns:item" soapAction="">
+      </operation>
+      <operation xmlns:operNS="http://domain.foo" name="setBody" qname="operNS:setBody" soapAction="">
+        <parameter xmlns:pns="http://domain.foo" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:body" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://domain.foo" xmlns:retNS="http://domain.foo" xmlns:rtns="http://domain.foo" name="getUser" qname="operNS:getUser" returnQName="retNS:getUserReturn" returnType="rtns:User" soapAction="">
+      </operation>
+      <operation xmlns:operNS="http://domain.foo" xmlns:retNS="http://domain.foo" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getCreated_at" qname="operNS:getCreated_at" returnQName="retNS:getCreated_atReturn" returnType="rtns:dateTime" soapAction="">
+      </operation>
+      <operation xmlns:operNS="http://domain.foo" name="setCreated_at" qname="operNS:setCreated_at" soapAction="">
+        <parameter xmlns:pns="http://domain.foo" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:created_at" type="tns:dateTime"/>
+      </operation>
+      <operation xmlns:operNS="http://domain.foo" name="setTags" qname="operNS:setTags" soapAction="">
+        <parameter xmlns:pns="http://domain.foo" xmlns:tns="http://domain.foo" xmlns:itns="http://domain.foo" qname="pns:tags" type="tns:ArrayOf_xsd_anyType" itemQName="itns:item"/>
+      </operation>
+      <operation xmlns:operNS="http://domain.foo" xmlns:retNS="http://domain.foo" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getId" qname="operNS:getId" returnQName="retNS:getIdReturn" returnType="rtns:long" soapAction="">
+      </operation>
+      <parameter name="allowedMethods" value="getUser setTags getBody getCreated_at setUser getTags getId setCreated_at setBody setId"/>
+
+      <typeMapping xmlns:ns="http://domain.foo" qname="ns:&gt;setTagsResponse" type="java:foo.domain.SetTagsResponse" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://domain.foo" qname="ns:User" type="java:foo.domain.User" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://domain.foo" qname="ns:&gt;setCreated_atResponse" type="java:foo.domain.SetCreated_atResponse" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://domain.foo" qname="ns:&gt;getTags" type="java:foo.domain.GetTags" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://domain.foo" qname="ns:&gt;getId" type="java:foo.domain.GetId" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://domain.foo" qname="ns:&gt;setId" type="java:foo.domain.SetId" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://domain.foo" qname="ns:&gt;getIdResponse" type="java:foo.domain.GetIdResponse" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://domain.foo" qname="ns:&gt;getUser" type="java:foo.domain.GetUser" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://domain.foo" qname="ns:&gt;getTagsResponse" type="java:foo.domain.GetTagsResponse" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://domain.foo" qname="ns:&gt;getCreated_at" type="java:foo.domain.GetCreated_at" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://domain.foo" qname="ns:&gt;setCreated_at" type="java:foo.domain.SetCreated_at" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://domain.foo" qname="ns:&gt;getBody" type="java:foo.domain.GetBody" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://domain.foo" qname="ns:&gt;setUser" type="java:foo.domain.SetUser" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://domain.foo" qname="ns:&gt;getCreated_atResponse" type="java:foo.domain.GetCreated_atResponse" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://domain.foo" qname="ns:&gt;setIdResponse" type="java:foo.domain.SetIdResponse" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://domain.foo" qname="ns:&gt;getUserResponse" type="java:foo.domain.GetUserResponse" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://domain.foo" qname="ns:&gt;setUserResponse" type="java:foo.domain.SetUserResponse" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://domain.foo" qname="ns:&gt;setBody" type="java:foo.domain.SetBody" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://domain.foo" qname="ns:&gt;setBodyResponse" type="java:foo.domain.SetBodyResponse" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <arrayMapping xmlns:ns="http://domain.foo" xmlns:cmp-ns="http://www.w3.org/2001/XMLSchema" qname="ns:ArrayOf_xsd_anyType" type="java:java.lang.Object[]" innerType="cmp-ns:anyType" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://domain.foo" qname="ns:&gt;getBodyResponse" type="java:foo.domain.GetBodyResponse" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://domain.foo" qname="ns:&gt;setTags" type="java:foo.domain.SetTags" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+  </service>
+</deployment>
